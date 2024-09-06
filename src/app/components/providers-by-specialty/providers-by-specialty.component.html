@@ -1,0 +1,21 @@
+@for (provider of filteredProviders; let i = $index; track provider) {
+  <h4>{{ provider.preferredFullName[0].value }}</h4>
+  <table class="gls-table gls-table-responsive gls-table-divider">
+    <thead>
+      <tr>
+        <th>License Description</th>
+        <th>License State</th>
+        <th>License Certificate ID</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cert of provider.licenseCertificateList.licensesCertificates; let isFirst = $first; track cert) {
+        <tr>
+          <td>{{ cert.licenseDescription || 'N/A' }}</td>
+          <td>{{ cert.licenseState || 'N/A' }}</td>
+          <td>{{ cert.licenseCertificateId || 'N/A' }}</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+}

@@ -1,0 +1,91 @@
+[
+  {
+    "preferredFullName": [
+      {
+        "value": "John Doe"
+      }
+    ],
+    "specialtyList": [
+      {
+        "specialtyId": "test01",
+        "specialtyTitle": "Test Title 1"
+      }
+    ],
+    "licenseCertificateList": {
+      "licensesCertificates": [
+        {
+          "licenseDescription": "Licensed Clinical Psychologist",
+          "licenseState": "Utah",
+          "licenseCertificateId": "UT12345"
+        },
+        {
+          "licenseDescription": "Board Certified Behavioral Analyst",
+          "licenseState": "California",
+          "licenseCertificateId": "CA98765"
+        }
+      ]
+    }
+  },
+  {
+    "preferredFullName": [
+      {
+        "value": "Jane Smith"
+      }
+    ],
+    "specialtyList": [
+      {
+        "specialtyId": "test01",
+        "specialtyTitle": "Test Title 1"
+      },
+      {
+        "specialtyId": "test02",
+        "specialtyTitle": "Test Title 2"
+      }
+    ],
+    "licenseCertificateList": {
+      "licensesCertificates": [
+        {
+          "licenseDescription": "Licensed Professional Counselor",
+          "licenseState": "Nevada",
+          "licenseCertificateId": "NV45678"
+        }
+      ]
+    }
+  },
+  {
+    "preferredFullName": [
+      {
+        "value": "Emily Johnson"
+      }
+    ],
+    "specialtyList": [
+      {
+        "specialtyId": "test02",
+        "specialtyTitle": "Test Title 2"
+      },
+      {
+        "specialtyId": "test03",
+        "specialtyTitle": "Test Title 3"
+      }
+    ],
+    "licenseCertificateList": {
+      "licensesCertificates": [
+        {
+          "licenseDescription": "Licensed Marriage and Family Therapist",
+          "licenseState": "Arizona",
+          "licenseCertificateId": "AZ11223"
+        },
+        {
+          "licenseDescription": "Certified Mental Health Counselor",
+          "licenseState": "Texas",
+          "licenseCertificateId": "TX55678"
+        },
+        {
+          "licenseDescription": "Licensed Clinical Social Worker",
+          "licenseState": "Utah",
+          "licenseCertificateId": "UT99887"
+        }
+      ]
+    }
+  }
+]
