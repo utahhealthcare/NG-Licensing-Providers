@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ProvidersService } from '../../services/providers.service';
 import { Provider } from '../../models/doctor.model';
 
@@ -7,25 +7,45 @@ import { Provider } from '../../models/doctor.model';
   standalone: true,
   templateUrl: './providers-by-specialty.component.html'
 })
-export class ProvidersBySpecialtyComponent {
+export class ProvidersBySpecialtyComponent implements OnInit {
   @Input() specialty!: string;
+  @Input() title!: string;
+  @Input() customClass: string = ''; // Initialize default value
 
   providers: Provider[] = [];
-  filteredProviders: Provider[] = [];
+  hasLicenses = true;
+  errorMessage: string = '';
 
   constructor(private providersService: ProvidersService) {}
 
   ngOnInit(): void {
-    // Fetch providers from the service
-    this.providersService.getProviders().subscribe((data) => {
-      this.providers = data;
-      
-      // Filter providers based on the specialtyId
-      this.filteredProviders = this.providers.filter(provider => 
-        provider.specialtyList.some(specialty => specialty.specialtyId === this.specialty)
-      );
+    if (this.specialty) { // Ensure specialty is defined before calling the API
+      this.getProvidersBySpecialty(this.specialty);
+    }
+  }
 
-      console.log(this.filteredProviders); // Output filtered providers to the console for debugging
-    });
+  getProvidersBySpecialty(specialty: string): void {
+    this.providersService.getProviders(specialty)
+      .subscribe({
+        next: (data: Provider[]) => {
+          this.providers = data;
+          this.checkProviderLicenses();
+        },
+        error: (error) => this.handleError(error)
+      });
+  }
+
+  checkProviderLicenses(): void {
+    const providersWithLicenses = this.providers.filter(provider => provider.licenses.length > 0).length;
+    
+    if (providersWithLicenses === 0) {
+      this.hasLicenses = false;
+      console.error(`No providers in "${this.title}" have any licenses in the data.`);
+    }
+  }
+
+  handleError(error: any): void {
+    this.errorMessage = 'An error occurred while fetching providers';
+    console.error(error); // Log error for debugging
   }
 }

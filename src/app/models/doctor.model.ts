@@ -1,24 +1,32 @@
 export interface Provider {
-  preferredFullName: Value[];
-  licenseCertificateList: CertificateList;
-  specialtyList: Specialties[];
+  preferredFullName: string;
+  firstName: string;
+  lastName: string;
+  unid: string;
+  degrees: string;
+  starRatingTotal: string;
+  media: string;
+  specialties: Specialty[];
+  locations: Location[];
+  licenses: License[];
+  path: string;
 }
 
-interface Value {
-  value: string;
+export interface Specialty {
+  name: string;
+  specialty_id: string;
 }
 
-interface CertificateList {
-  licensesCertificates: Certificate[];
+export interface Location {
+  name: string;
+  search_building_name: string;
+  building_id: string;
+  clinic_id: string;
 }
 
-interface Certificate {
-  licenseDescription: string;
-  licenseState: string;
-  licenseCertificateId: string;
-}
-
-interface Specialties {
-  specialtyId: string;
-  specialtyTitle: string;
+export interface License {
+  description: string;
+  status: string;
+  state: string | null;
+  certificate_id: string;
 }

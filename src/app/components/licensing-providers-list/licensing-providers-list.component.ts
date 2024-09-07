@@ -7,6 +7,4 @@ import { ProvidersBySpecialtyComponent } from '../providers-by-specialty/provide
   imports: [ProvidersBySpecialtyComponent],
   templateUrl: './licensing-providers-list.component.html'
 })
-export class LicensingProvidersListComponent {
-
-}
+export class LicensingProvidersListComponent {}
