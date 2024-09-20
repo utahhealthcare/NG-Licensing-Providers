@@ -19,7 +19,7 @@ export class ProvidersBySpecialtyComponent implements OnInit {
   constructor(private providersService: ProvidersService) {}
 
   ngOnInit(): void {
-    if (this.specialty) { // Ensure specialty is defined before calling the API
+    if (this.specialty) {
       this.getProvidersBySpecialty(this.specialty);
     }
   }
@@ -29,6 +29,7 @@ export class ProvidersBySpecialtyComponent implements OnInit {
       .subscribe({
         next: (data: Provider[]) => {
           this.providers = data;
+          console.log(this.providers);
           this.checkProviderLicenses();
         },
         error: (error) => this.handleError(error)

@@ -1,30 +1,28 @@
 @if(hasLicenses) {
-  <section class="gls-section" [class]="customClass">
-    <div class="gls-container">
-      <h2 class="gls-text-center gls-text-primary"> {{ title }} </h2>
-      @for (provider of providers; let i = $index; track provider) {
-        @if(provider.licenses.length > 0) {
-          <h4>{{ provider.preferredFullName }}</h4>
-          <table class="gls-table gls-table-responsive gls-table-divider">
-            <thead>
+  <div class="gls-container">
+    <h2 class="gls-text-center gls-text-primary"> {{ title }} </h2>
+    @for (provider of providers; let i = $index; track provider) {
+      @if(provider.licenses.length > 0) {
+        <h4>{{ provider.preferredFullName }}</h4>
+        <table class="gls-table gls-table-responsive gls-table-divider">
+          <thead>
+            <tr>
+              <th>License Description</th>
+              <th>License State</th>
+              <th>License Certificate ID</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (license of provider.licenses; let isFirst = $first; track license) {
               <tr>
-                <th>License Description</th>
-                <th>License State</th>
-                <th>License Certificate ID</th>
+                <td>{{ license.description || 'N/A' }}</td>
+                <td>{{ license.state || 'N/A' }}</td>
+                <td>{{ license.certificate_id || 'N/A' }}</td>
               </tr>
-            </thead>
-            <tbody>
-              @for (license of provider.licenses; let isFirst = $first; track license) {
-                <tr>
-                  <td>{{ license.description || 'N/A' }}</td>
-                  <td>{{ license.state || 'N/A' }}</td>
-                  <td>{{ license.certificate_id || 'N/A' }}</td>
-                </tr>
-              }
-            </tbody>
-          </table>
-        }
+            }
+          </tbody>
+        </table>
       }
-    </div>
-  </section>
+    }
+  </div>
 }
