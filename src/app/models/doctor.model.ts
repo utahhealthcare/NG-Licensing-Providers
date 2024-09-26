@@ -29,4 +29,12 @@ export interface License {
   status: string;
   state: string | null;
   certificate_id: string;
+  number: string;
+  country: string;
+  award_date: string;
+  expired_date: string;
+  expired_year: number;
+  field_of_licensure: string;
+  issuer: string;
+  years: string;
 }
