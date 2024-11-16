@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ProvidersService } from '../../services/providers.service';
-import { Provider } from '../../models/doctor.model';
+import { License, Provider } from '../../models/doctor.model';
 
 @Component({
   selector: 'app-providers-by-specialty',
@@ -28,8 +28,12 @@ export class ProvidersBySpecialtyComponent implements OnInit {
     this.providersService.getProviders(specialty)
       .subscribe({
         next: (data: Provider[]) => {
-          this.providers = data;
-          console.log(this.providers);
+          // Filter licenses with description "State License"
+          this.providers = data.map((provider: Provider) => ({
+            ...provider,
+            licenses: provider.licenses.filter((license: License) => license.description === 'State License')
+          }));
+  
           this.checkProviderLicenses();
         },
         error: (error) => this.handleError(error)

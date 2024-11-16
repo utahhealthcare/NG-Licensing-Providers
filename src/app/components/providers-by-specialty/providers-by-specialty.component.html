@@ -3,8 +3,8 @@
     <h2 class="gls-text-center gls-text-primary"> {{ title }} </h2>
     @for (provider of providers; let i = $index; track provider) {
       @if(provider.licenses.length > 0) {
-        <h4>{{ provider.preferredFullName }}</h4>
-        <table class="gls-table gls-table-responsive gls-table-divider">
+        <h4><a [href]="provider.path">{{ provider.preferredFullName }}</a></h4>
+        <table class="gls-table gls-table-responsive gls-table-divider gls-table-striped">
           <thead>
             <tr>
               <th>License Description</th>
@@ -25,4 +25,5 @@
       }
     }
   </div>
+  <hr/>
 }
